@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
@@ -38,6 +39,12 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center gap-3 sm:items-start">
           <Button type="button">basecn (Base UI + shadcn-style)</Button>
+          <Link
+            href="/prototype"
+            className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+          >
+            Prototype area
+          </Link>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
