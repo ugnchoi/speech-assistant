@@ -4,11 +4,13 @@ import { FlowBack } from "@/components/navigation/flow-back";
 import { FlowCta } from "@/components/navigation/flow-cta";
 import { useFlow } from "@/components/providers/flow-provider";
 
+const FALLBACK_QUESTION =
+  "이번 설교를 준비하시며 가장 오래 마음에 두셨던 질문은 무엇이었나요?";
+
 export const ReflectionQuestion = () => {
   const { session, goNext, goBack } = useFlow();
-  const text =
-    session.reflection?.nextReflectionQuestion ??
-    "이번 설교에서 청중이 가장 쉽게 잊어버릴 수 있는 부분은 어디였을까요? (예시 텍스트)";
+  const raw = session.reflection?.nextReflectionQuestion?.trim();
+  const text = raw && raw.length > 0 ? raw : FALLBACK_QUESTION;
 
   return (
     <div className="screen-fade-in space-y-8">

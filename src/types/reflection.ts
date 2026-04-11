@@ -16,6 +16,15 @@ export type ReflectionResult = {
   nextReflectionQuestion?: string;
 };
 
+/** Curated sermon + reflection pair for the "Try sample" flow (Phase 3). */
+export type SermonFixture = {
+  id: string;
+  title: string;
+  sermonText: string;
+  suggestedIntention: string;
+  reflection: ReflectionResult;
+};
+
 export type Calibration = {
   closeness: "close" | "somewhat" | "not-close";
   comment?: string;
@@ -31,6 +40,8 @@ export type ReflectionSession = {
   intention: string;
   sermonText: string;
   usedSample: boolean;
+  /** When set, processing uses the fixture's curated reflection instead of the heuristic engine. */
+  sampleFixtureId: string | null;
   reflection: ReflectionResult | null;
   calibration: Calibration | null;
   chosenNextStep: "suggestion" | "reflection-question" | null;

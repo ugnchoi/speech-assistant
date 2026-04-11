@@ -30,6 +30,10 @@ const normalizeSession = (raw: unknown): ReflectionSession | null => {
     intention: typeof s.intention === "string" ? s.intention : "",
     sermonText: typeof s.sermonText === "string" ? s.sermonText : "",
     usedSample: Boolean(s.usedSample),
+    sampleFixtureId:
+      typeof s.sampleFixtureId === "string" && s.sampleFixtureId.length > 0
+        ? s.sampleFixtureId
+        : null,
     reflection: s.reflection ?? null,
     calibration: s.calibration ?? null,
     chosenNextStep: s.chosenNextStep ?? null,

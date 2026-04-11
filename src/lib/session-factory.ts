@@ -17,6 +17,7 @@ export const createNewReflectionSession = (): ReflectionSession => {
     intention: "",
     sermonText: "",
     usedSample: false,
+    sampleFixtureId: null,
     reflection: null,
     calibration: null,
     chosenNextStep: null,
