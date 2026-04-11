@@ -36,6 +36,14 @@ export const getMaxAccessibleStep = (session: ReflectionSession): StepId => {
     return "calibration";
   }
 
+  if (
+    session.reflectionGenerationFailed &&
+    intentionMeetsMinimum(session.intention) &&
+    sermonMeetsMinimum(session.sermonText)
+  ) {
+    return "reflection";
+  }
+
   if (sermonMeetsMinimum(session.sermonText)) {
     return "processing";
   }
@@ -111,7 +119,7 @@ export const canGoNext = (step: StepId, session: ReflectionSession): boolean => 
     case "processing":
       return true;
     case "reflection":
-      return session.reflection != null;
+      return session.reflection != null || Boolean(session.reflectionGenerationFailed);
     case "calibration":
       return session.calibration?.closeness != null;
     case "next-step":

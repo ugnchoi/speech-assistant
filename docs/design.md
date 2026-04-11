@@ -60,7 +60,7 @@ Anything that reads as:
 ### Footer
 
 - Very minimal
-- Example line: “Private prototype • No scores • No rewriting”
+- Example line: “개인 프로토타입 · 점수 없음 · 수정 없음” (Korean shell footer in app)
 
 ---
 

@@ -25,6 +25,7 @@ import {
   clearAllSessions,
   deleteSession,
   isBrowser,
+  isLocalStorageAvailable,
   loadLatestSession,
   loadSession,
   saveSession,
@@ -85,6 +86,8 @@ const FlowProviderInner = ({ children }: FlowProviderInnerProps) => {
   const searchParams = useSearchParams();
   const [session, setSession] = useState<ReflectionSession | null>(null);
   const [currentStep, setCurrentStep] = useState<StepId>("landing");
+  const persistAvailable =
+    typeof window === "undefined" ? true : isLocalStorageAvailable();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sessionRef = useRef<ReflectionSession | null>(null);
   const initializedRef = useRef(false);
@@ -368,7 +371,20 @@ const FlowProviderInner = ({ children }: FlowProviderInnerProps) => {
     updateSession,
   };
 
-  return <FlowContext.Provider value={value}>{children}</FlowContext.Provider>;
+  return (
+    <FlowContext.Provider value={value}>
+      {!persistAvailable ? (
+        <p
+          className="mb-4 rounded-lg border border-border bg-muted/30 px-4 py-3 text-center text-xs text-muted-foreground"
+          role="status"
+          suppressHydrationWarning
+        >
+          이 브라우저에서는 저장 기능이 제한됩니다.
+        </p>
+      ) : null}
+      {children}
+    </FlowContext.Provider>
+  );
 };
 
 type FlowProviderProps = {

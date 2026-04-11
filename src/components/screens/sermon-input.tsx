@@ -10,6 +10,8 @@ import { getSermonFixtureById, sermonFixtures } from "@/lib/fixtures";
 import { sermonMeetsMinimum } from "@/lib/flow";
 
 import { Button } from "@/components/ui/button";
+import { TrustNote } from "@/components/ui/trust-note";
+import { EDGE_MESSAGES } from "@/lib/edge-messages";
 
 const MIN = 50;
 
@@ -90,7 +92,8 @@ export const SermonInput = () => {
       <div className="space-y-4">
         <h1 className="text-screen-title text-balance text-foreground">설교 공유하기</h1>
         <p className="text-body text-pretty leading-relaxed text-muted-foreground">
-          이번 성찰에서는 전달 방식보다 청중의 경험에 초점을 맞춥니다.
+          이번 성찰에서는 말하는 방식보다, 청중이 어떻게 받아들였을지에 가까이 머뭅니다. 완성된
+          글이 아니어도 괜찮습니다.
         </p>
       </div>
 
@@ -151,6 +154,10 @@ export const SermonInput = () => {
             {!valid && value.trim().length > 0 ? ` · ${remaining}자 더 필요` : ""}
           </p>
         </div>
+        <TrustNote icon="shield">설교 내용은 서버로 전송되지 않습니다.</TrustNote>
+        {!valid && value.trim().length > 0 && value.trim().length < MIN ? (
+          <p className="text-xs text-muted-foreground">{EDGE_MESSAGES.sermonTooShortHint}</p>
+        ) : null}
         <div className="flex justify-end">
           <Button
             type="button"

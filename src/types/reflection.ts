@@ -43,6 +43,8 @@ export type ReflectionSession = {
   /** When set, processing uses the fixture's curated reflection instead of the heuristic engine. */
   sampleFixtureId: string | null;
   reflection: ReflectionResult | null;
+  /** Set when heuristic reflection throws; cleared when processing screen mounts. */
+  reflectionGenerationFailed?: boolean;
   calibration: Calibration | null;
   chosenNextStep: "suggestion" | "reflection-question" | null;
   completedAt: string | null;

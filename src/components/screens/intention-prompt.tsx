@@ -5,6 +5,7 @@ import type { ChangeEventHandler } from "react";
 import { FlowBack } from "@/components/navigation/flow-back";
 import { FlowCta } from "@/components/navigation/flow-cta";
 import { useFlow } from "@/components/providers/flow-provider";
+import { TrustNote } from "@/components/ui/trust-note";
 import { intentionMeetsMinimum } from "@/lib/flow";
 
 const MIN = 10;
@@ -23,9 +24,11 @@ export const IntentionPrompt = () => {
     <div className="screen-fade-in space-y-10">
       <div className="space-y-6">
         <h1 className="text-screen-title text-balance text-foreground">듣기 전에</h1>
-        <p className="text-body-lg text-foreground">사람들이 무엇을 가장 마음에 담아가길 바라셨나요?</p>
+        <p className="text-body-lg text-foreground">
+          오늘, 사람들이 무엇을 가장 마음에 담아 가길 바라셨나요?
+        </p>
         <p className="text-helper text-muted-foreground">
-          한 문장이면 충분합니다. 최소 {MIN}자 이상 적어 주세요.
+          편하신 대로 한 문장만 적어 주셔도 됩니다. 최소 {MIN}자 이상이면 이어갈 수 있어요.
           {!valid && value.trim().length > 0 ? ` (${remaining}자 더 필요)` : ""}
         </p>
       </div>
@@ -44,6 +47,7 @@ export const IntentionPrompt = () => {
           className="w-full resize-y rounded-xl border border-border bg-card p-4 text-body text-foreground shadow-sm outline-none transition-[box-shadow] placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
           aria-label="설교에 담고 싶었던 마음을 한 문장으로 입력"
         />
+        <TrustNote>이 내용은 이 기기에만 저장됩니다.</TrustNote>
       </div>
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
