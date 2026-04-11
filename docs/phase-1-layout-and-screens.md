@@ -1,5 +1,7 @@
 # Phase 1 — Layout + Screens
 
+**Routing approach:** Separate routes under `src/app/prototype/*` (one URL per screen). `/prototype` is a flow index with links to each step. Phase 2 can add redirects or a step manager without replacing these pages.
+
 **Focus:** Build the visual skeleton — the app shell, all screen containers, and static UI for each step of the reflection flow.
 
 **Depends on:** Nothing (first phase)
