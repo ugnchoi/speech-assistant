@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "설교의 메아리 · Prototype",
-  description: "설교에 대한 간단한 청중 반응 성찰 프로토타입",
+  description: "설교를 들은 한 청중의 인상을 조용히 들어 보는 성찰 프로토타입",
 };
 
 export default function RootLayout({
