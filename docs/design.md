@@ -68,6 +68,7 @@ Anything that reads as:
 
 - **Shell:** Top bar wordmark, muted “Prototype” pill, optional “How it works” link; centered `max-w-2xl` column; minimal footer line.
 - **Color:** Light warm-gray background (`globals.css` OKLCH tokens), soft borders, primary action is subdued warm gray-brown rather than bright blue.
+- **Reflection (Screen 6):** Intended takeaway sits in a dashed, muted context band; echo uses a left-accent quote block; “needs help” uses a softer muted card; “alive” uses a light tinted highlight card.
 
 ## Related docs
 

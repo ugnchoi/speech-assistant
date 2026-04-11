@@ -4,11 +4,13 @@ import { FlowBack } from "@/components/navigation/flow-back";
 import { FlowCta } from "@/components/navigation/flow-cta";
 import { useFlow } from "@/components/providers/flow-provider";
 
+const FALLBACK_SUGGESTION =
+  "지금 떠오르는 대로, 핵심 메시지를 한 문장으로만 적어 보신 뒤 잠시 내려놓아 보셔도 괜찮습니다.";
+
 export const GentleSuggestion = () => {
   const { session, goNext, goBack } = useFlow();
-  const text =
-    session.reflection?.gentleSuggestion ??
-    "핵심 메시지를 한 문장으로 적어 보신 뒤, 설교 중 그 문장을 듣는 이가 가장 잘 받아들일 수 있는 순간이 어디일지 떠올려 보시면 도움이 될 수 있습니다. (예시 텍스트)";
+  const raw = session.reflection?.gentleSuggestion?.trim();
+  const text = raw && raw.length > 0 ? raw : FALLBACK_SUGGESTION;
 
   return (
     <div className="screen-fade-in space-y-8">

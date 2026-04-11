@@ -3,23 +3,49 @@
 import { useEffect, useRef } from "react";
 
 import { useFlow } from "@/components/providers/flow-provider";
-import { buildMockReflectionResult } from "@/lib/reflection-mock";
+import { getSermonFixtureById, matchFixtureBySermonText } from "@/lib/fixtures";
+import { generateReflection } from "@/lib/mock-engine";
 
-const DELAY_MS = 2500;
+const randomProcessingDelayMs = (): number => {
+  return 1500 + Math.floor(Math.random() * 1501);
+};
 
 export const Processing = () => {
-  const { goToWithSession } = useFlow();
+  const { goToWithSession, session } = useFlow();
   const firedRef = useRef(false);
+  const sessionRef = useRef(session);
+
+  useEffect(() => {
+    sessionRef.current = session;
+  }, [session]);
 
   useEffect(() => {
     if (firedRef.current) {
       return;
     }
     firedRef.current = true;
+    const delayMs = randomProcessingDelayMs();
     const id = window.setTimeout(() => {
-      const reflection = buildMockReflectionResult();
+      const s = sessionRef.current;
+      let reflection = generateReflection({
+        intention: s.intention,
+        sermonText: s.sermonText,
+      });
+
+      if (s.usedSample && s.sampleFixtureId) {
+        const fixture = getSermonFixtureById(s.sampleFixtureId);
+        if (fixture && fixture.sermonText.trim() === s.sermonText.trim()) {
+          reflection = fixture.reflection;
+        }
+      } else {
+        const matched = matchFixtureBySermonText(s.sermonText);
+        if (matched) {
+          reflection = matched.reflection;
+        }
+      }
+
       goToWithSession("reflection", { reflection });
-    }, DELAY_MS);
+    }, delayMs);
     return () => window.clearTimeout(id);
   }, [goToWithSession]);
 
@@ -28,7 +54,12 @@ export const Processing = () => {
       <h1 className="text-screen-title text-balance text-center text-foreground">
         청중의 반응을 준비하고 있습니다
       </h1>
-      <div className="flex flex-col items-center gap-4" role="status" aria-live="polite" aria-label="처리 중">
+      <div
+        className="flex flex-col items-center gap-4"
+        role="status"
+        aria-live="polite"
+        aria-label="처리 중"
+      >
         <span className="processing-dot" aria-hidden />
         <p className="text-helper text-center text-muted-foreground">잠시만 기다려 주세요</p>
       </div>
