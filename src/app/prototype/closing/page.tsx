@@ -1,5 +1,5 @@
-import { Closing } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function ClosingPage() {
-  return <Closing />;
+export default function ClosingRedirectPage() {
+  redirect("/prototype?step=closing");
 }

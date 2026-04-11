@@ -1,4 +1,28 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+import { useFlow } from "@/components/providers/flow-provider";
+import { buildMockReflectionResult } from "@/lib/reflection-mock";
+
+const DELAY_MS = 2500;
+
 export const Processing = () => {
+  const { goToWithSession } = useFlow();
+  const firedRef = useRef(false);
+
+  useEffect(() => {
+    if (firedRef.current) {
+      return;
+    }
+    firedRef.current = true;
+    const id = window.setTimeout(() => {
+      const reflection = buildMockReflectionResult();
+      goToWithSession("reflection", { reflection });
+    }, DELAY_MS);
+    return () => window.clearTimeout(id);
+  }, [goToWithSession]);
+
   return (
     <div className="screen-fade-in space-y-12">
       <h1 className="text-screen-title text-balance text-center text-foreground">

@@ -1,5 +1,5 @@
-import { GentleSuggestion } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function SuggestionPage() {
-  return <GentleSuggestion />;
+export default function SuggestionRedirectPage() {
+  redirect("/prototype?step=suggestion");
 }

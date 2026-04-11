@@ -1,5 +1,5 @@
-import { ReflectionResult } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function ReflectionPage() {
-  return <ReflectionResult />;
+export default function ReflectionRedirectPage() {
+  redirect("/prototype?step=reflection");
 }

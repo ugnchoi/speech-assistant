@@ -1,5 +1,5 @@
-import { SermonInput } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function SermonInputPage() {
-  return <SermonInput />;
+export default function SermonInputRedirectPage() {
+  redirect("/prototype?step=sermon-input");
 }

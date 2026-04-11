@@ -1,24 +1,54 @@
 "use client";
 
-import type { KeyboardEvent } from "react";
-import { useState } from "react";
+import type { ChangeEventHandler, KeyboardEvent } from "react";
 
-const options = [
+import { FlowBack } from "@/components/navigation/flow-back";
+import { FlowCta } from "@/components/navigation/flow-cta";
+import { useFlow } from "@/components/providers/flow-provider";
+import type { Calibration as CalibrationData } from "@/types/reflection";
+
+const options: { id: CalibrationData["closeness"]; label: string }[] = [
   { id: "close", label: "가깝게 느껴집니다" },
   { id: "somewhat", label: "어느 정도 가깝습니다" },
   { id: "not-close", label: "가깝지 않게 느껴집니다" },
-] as const;
+];
 
 export const Calibration = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const { session, updateSession, goNext, goBack } = useFlow();
+  const selected = session.calibration?.closeness ?? null;
+  const comment = session.calibration?.comment ?? "";
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>, id: string) => {
+  const handleSelect = (closeness: CalibrationData["closeness"]) => {
+    updateSession({
+      calibration: {
+        closeness,
+        comment: session.calibration?.comment,
+      },
+    });
+  };
+
+  const handleCommentChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+    const closeness = session.calibration?.closeness;
+    if (!closeness) {
+      return;
+    }
+    updateSession({
+      calibration: {
+        closeness,
+        comment: event.target.value,
+      },
+    });
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>, id: CalibrationData["closeness"]) => {
     if (event.key !== "Enter" && event.key !== " ") {
       return;
     }
     event.preventDefault();
-    setSelected(id);
+    handleSelect(id);
   };
+
+  const canContinue = selected != null;
 
   return (
     <div className="screen-fade-in space-y-10">
@@ -39,7 +69,7 @@ export const Calibration = () => {
               role="radio"
               tabIndex={0}
               aria-checked={isSelected}
-              onClick={() => setSelected(opt.id)}
+              onClick={() => handleSelect(opt.id)}
               onKeyDown={(e) => handleKeyDown(e, opt.id)}
               className={`cursor-pointer rounded-xl border p-4 text-body outline-none transition-[border-color,box-shadow,background-color] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40 sm:p-5 ${
                 isSelected
@@ -53,18 +83,27 @@ export const Calibration = () => {
         })}
       </div>
 
-      <div className="space-y-2">
-        <label htmlFor="calibration-note" className="text-helper text-muted-foreground">
-          더 하고 싶은 말이 있으시면 적어 주세요. (선택)
-        </label>
-        <textarea
-          id="calibration-note"
-          name="calibrationNote"
-          rows={3}
-          className="w-full resize-y rounded-xl border border-border bg-card p-4 text-body text-foreground shadow-sm outline-none transition-[box-shadow] placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
-          placeholder="느낀 점을 짧게 남겨 주세요."
-          aria-label="보정에 대한 추가 의견"
-        />
+      {selected != null ? (
+        <div className="space-y-2">
+          <label htmlFor="calibration-note" className="text-helper text-muted-foreground">
+            더 하고 싶은 말이 있으시면 적어 주세요. (선택)
+          </label>
+          <textarea
+            id="calibration-note"
+            name="calibrationNote"
+            rows={3}
+            value={comment}
+            onChange={handleCommentChange}
+            className="w-full resize-y rounded-xl border border-border bg-card p-4 text-body text-foreground shadow-sm outline-none transition-[box-shadow] placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            placeholder="느낀 점을 짧게 남겨 주세요."
+            aria-label="보정에 대한 추가 의견"
+          />
+        </div>
+      ) : null}
+
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <FlowCta label="계속하기" onClick={goNext} disabled={!canContinue} aria-label="계속하기" />
+        <FlowBack onClick={goBack} />
       </div>
     </div>
   );

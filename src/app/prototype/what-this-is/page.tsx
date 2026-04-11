@@ -1,5 +1,5 @@
-import { WhatThisIs } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function WhatThisIsPage() {
-  return <WhatThisIs />;
+export default function WhatThisIsRedirectPage() {
+  redirect("/prototype?step=what-this-is");
 }

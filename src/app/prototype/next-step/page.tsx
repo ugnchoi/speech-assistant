@@ -1,5 +1,5 @@
-import { NextStep } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function NextStepPage() {
-  return <NextStep />;
+export default function NextStepRedirectPage() {
+  redirect("/prototype?step=next-step");
 }

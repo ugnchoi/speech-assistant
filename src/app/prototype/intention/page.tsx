@@ -1,5 +1,5 @@
-import { IntentionPrompt } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function IntentionPage() {
-  return <IntentionPrompt />;
+export default function IntentionRedirectPage() {
+  redirect("/prototype?step=intention");
 }

@@ -1,6 +1,7 @@
-import Link from "next/link";
+"use client";
 
-import { Button } from "@/components/ui/button";
+import { FlowCta } from "@/components/navigation/flow-cta";
+import { useFlow } from "@/components/providers/flow-provider";
 
 const trustStatements = [
   "점수는 제공하지 않습니다",
@@ -8,7 +9,17 @@ const trustStatements = [
   "요청하지 않는 한 내용을 수정하지 않습니다",
 ];
 
-export const Landing = () => {
+export const FlowLanding = () => {
+  const { goTo } = useFlow();
+
+  const handleStart = () => {
+    goTo("what-this-is");
+  };
+
+  const handleSample = () => {
+    goTo("sermon-input");
+  };
+
   return (
     <div className="screen-fade-in space-y-10">
       <div className="space-y-6">
@@ -35,22 +46,15 @@ export const Landing = () => {
       </ul>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <Button
-          nativeButton={false}
-          render={<Link href="/prototype?step=what-this-is" />}
-          size="lg"
-          className="w-full sm:w-auto"
-          aria-label="성찰 시작하기"
-        >
-          성찰 시작하기
-        </Button>
-        <Link
-          href="/prototype?step=sermon-input"
+        <FlowCta label="성찰 시작하기" onClick={handleStart} aria-label="성찰 시작하기" />
+        <button
+          type="button"
+          onClick={handleSample}
           className="text-center text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:text-left"
           aria-label="예시 설교 입력 화면으로 이동"
         >
           예시 보기
-        </Link>
+        </button>
       </div>
     </div>
   );
