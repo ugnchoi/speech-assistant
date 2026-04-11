@@ -1,5 +1,5 @@
-import { Processing } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function ProcessingPage() {
-  return <Processing />;
+export default function ProcessingRedirectPage() {
+  redirect("/prototype?step=processing");
 }

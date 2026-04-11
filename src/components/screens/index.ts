@@ -1,5 +1,6 @@
 export { Calibration } from "./calibration";
 export { Closing } from "./closing";
+export { FlowLanding } from "./flow-landing";
 export { GentleSuggestion } from "./gentle-suggestion";
 export { IntentionPrompt } from "./intention-prompt";
 export { Landing } from "./landing";

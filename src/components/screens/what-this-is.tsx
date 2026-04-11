@@ -1,6 +1,8 @@
-import Link from "next/link";
+"use client";
 
-import { Button } from "@/components/ui/button";
+import { FlowBack } from "@/components/navigation/flow-back";
+import { FlowCta } from "@/components/navigation/flow-cta";
+import { useFlow } from "@/components/providers/flow-provider";
 
 const bodyParagraphs = [
   "이 도구는 설교와 사용자가 의도한 메시지를 바탕으로 생성된 간단한 청중 반응입니다.",
@@ -15,6 +17,8 @@ const summaryBullets = [
 ];
 
 export const WhatThisIs = () => {
+  const { goNext, goBack } = useFlow();
+
   return (
     <div className="screen-fade-in space-y-10">
       <div className="space-y-8">
@@ -39,22 +43,8 @@ export const WhatThisIs = () => {
       </div>
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <Button
-          nativeButton={false}
-          render={<Link href="/prototype/intention" />}
-          size="lg"
-          className="w-full sm:w-auto"
-          aria-label="계속하기"
-        >
-          계속하기
-        </Button>
-        <Link
-          href="/"
-          className="text-center text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:text-left"
-          aria-label="이전 화면으로 돌아가기"
-        >
-          뒤로
-        </Link>
+        <FlowCta label="계속하기" onClick={goNext} aria-label="계속하기" />
+        <FlowBack onClick={goBack} />
       </div>
     </div>
   );

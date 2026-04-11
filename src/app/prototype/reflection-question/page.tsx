@@ -1,5 +1,5 @@
-import { ReflectionQuestion } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function ReflectionQuestionPage() {
-  return <ReflectionQuestion />;
+export default function ReflectionQuestionRedirectPage() {
+  redirect("/prototype?step=reflection-question");
 }

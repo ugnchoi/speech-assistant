@@ -22,7 +22,7 @@ export const Shell = ({ children }: ShellProps) => {
               Prototype
             </span>
             <Link
-              href="/prototype/what-this-is"
+              href="/prototype?step=what-this-is"
               className="hidden text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:inline"
               aria-label="이 도구가 하는 일 설명 보기"
             >

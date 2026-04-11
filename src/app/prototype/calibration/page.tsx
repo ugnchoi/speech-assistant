@@ -1,5 +1,5 @@
-import { Calibration } from "@/components/screens";
+import { redirect } from "next/navigation";
 
-export default function CalibrationPage() {
-  return <Calibration />;
+export default function CalibrationRedirectPage() {
+  redirect("/prototype?step=calibration");
 }
