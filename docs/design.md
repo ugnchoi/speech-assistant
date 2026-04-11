@@ -64,6 +64,11 @@ Anything that reads as:
 
 ---
 
+## Implementation notes (prototype)
+
+- **Shell:** Top bar wordmark, muted “Prototype” pill, optional “How it works” link; centered `max-w-2xl` column; minimal footer line.
+- **Color:** Light warm-gray background (`globals.css` OKLCH tokens), soft borders, primary action is subdued warm gray-brown rather than bright blue.
+
 ## Related docs
 
 - [Speech reflection prototype map](./speech-reflection-prototype-map.md) — flow, scope, tone, and phased plan
