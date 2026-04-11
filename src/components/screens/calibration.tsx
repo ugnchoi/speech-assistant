@@ -5,12 +5,29 @@ import type { ChangeEventHandler, KeyboardEvent } from "react";
 import { FlowBack } from "@/components/navigation/flow-back";
 import { FlowCta } from "@/components/navigation/flow-cta";
 import { useFlow } from "@/components/providers/flow-provider";
+import { TrustNote } from "@/components/ui/trust-note";
 import type { Calibration as CalibrationData } from "@/types/reflection";
 
-const options: { id: CalibrationData["closeness"]; label: string }[] = [
-  { id: "close", label: "가깝게 느껴집니다" },
-  { id: "somewhat", label: "어느 정도 가깝습니다" },
-  { id: "not-close", label: "가깝지 않게 느껴집니다" },
+const options: {
+  id: CalibrationData["closeness"];
+  label: string;
+  sub: string;
+}[] = [
+  {
+    id: "close",
+    label: "의도했던 것과 가까워요",
+    sub: "성찰이 의도한 메시지를 잘 반영한 것 같습니다",
+  },
+  {
+    id: "somewhat",
+    label: "부분적으로 닿았어요",
+    sub: "일부는 닿았지만, 다른 부분도 있었습니다",
+  },
+  {
+    id: "not-close",
+    label: "의도했던 것과 달라요",
+    sub: "이 성찰이 다른 방향을 보여주고 있네요",
+  },
 ];
 
 export const Calibration = () => {
@@ -53,13 +70,13 @@ export const Calibration = () => {
   return (
     <div className="screen-fade-in space-y-10">
       <p className="text-body-lg text-pretty text-foreground">
-        이 결과가 의도하신 것과 얼마나 가깝게 느껴지셨나요?
+        이 성찰이 전하고 싶으셨던 마음과 얼마나 가깝게 느껴지셨나요? 편하신 대로 골라 주세요.
       </p>
 
       <div
         className="space-y-3"
         role="radiogroup"
-        aria-label="결과가 의도와 얼마나 가까운지 선택"
+        aria-label="성찰이 의도와 얼마나 가까웠는지 선택"
       >
         {options.map((opt) => {
           const isSelected = selected === opt.id;
@@ -77,7 +94,8 @@ export const Calibration = () => {
                   : "border-border bg-card text-foreground shadow-sm hover:bg-muted/25"
               }`}
             >
-              {opt.label}
+              <span className="font-medium">{opt.label}</span>
+              <p className="mt-1 text-sm text-muted-foreground">{opt.sub}</p>
             </div>
           );
         })}
@@ -96,10 +114,12 @@ export const Calibration = () => {
             onChange={handleCommentChange}
             className="w-full resize-y rounded-xl border border-border bg-card p-4 text-body text-foreground shadow-sm outline-none transition-[box-shadow] placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
             placeholder="느낀 점을 짧게 남겨 주세요."
-            aria-label="보정에 대한 추가 의견"
+            aria-label="느낀 점 추가로 남기기"
           />
         </div>
       ) : null}
+
+      <TrustNote>이 응답은 도구를 개선하는 데 도움이 됩니다.</TrustNote>
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <FlowCta label="계속하기" onClick={goNext} disabled={!canContinue} aria-label="계속하기" />

@@ -3,7 +3,7 @@ import type { ReflectionResult, SermonFixture } from "@/types/reflection";
 // English: God's faithfulness in the ordinary — warm, narrative, pastoral (~400–600 words)
 const fixtureFaithfulnessReflection: ReflectionResult = {
   intendedTakeaway:
-    "말씀하신 대로, 일상의 작은 자리에서도 하나님의 신실하심이 머물기를 바라셨던 마음이 여기에 담겨 있습니다.",
+    "말씀하신 대로, 일상의 작은 자리에서도 하나님의 신실하심이 머물기를 바라셨던 마음이 여기에 담겨 있을 수 있습니다.",
   echo:
     "청중 가운데 누군가는 ‘빛’이라는 말이 꼭 무대가 아니라 집으로 돌아가는 길, 반복되는 하루 속에서도 적용될 수 있다고 느낄 수 있습니다.",
   stayed:
@@ -13,15 +13,15 @@ const fixtureFaithfulnessReflection: ReflectionResult = {
   alive:
     "‘빛은 조용한 자리에서 더 자주 드러난다’는 문장이 특히 생생하게 다가올 수 있습니다.",
   gentleSuggestion:
-    "원하신다면, 설교 후반에 ‘오늘 이 말씀이 내일 아침 식탁에서 어떻게 느껴질지’ 한 문장만 덧붙여 보셔도 흐름이 한층 부드러워질 수 있습니다.",
+    "원하신다면, 설교 후반에 ‘오늘 이 말씀이 내일 아침 식탁에서 어떻게 느껴질지’ 한 문장만 덧붙여 보셔도 흐름이 한층 부드러워질 수 있습니다. 하나의 가능한 방향일 뿐, 꼭 하실 필요는 없습니다.",
   nextReflectionQuestion:
-    "이번 주 안에, 설교에서 말씀하신 ‘작은 신실함’이 실제로 어떤 모습으로 드러나길 가장 바라시나요?",
+    "만약 이번 주 안에 ‘작은 신실함’이 실제로 어떤 모습으로 드러나길 바라신다면, 그 한 가지는 무엇일까요?",
 };
 
 // English: Forgiveness and letting go — direct, emotional, personal (~300–500 words)
 const fixtureForgivenessReflection: ReflectionResult = {
   intendedTakeaway:
-    "용서가 완벽한 감정이 아니라, 손을 놓는 연습에 가깝다는 뜻을 전하고 싶으셨던 마음이 여기에 비춰집니다.",
+    "용서가 완벽한 감정이 아니라, 손을 놓는 연습에 가깝다는 뜻을 전하고 싶으셨던 마음이 여기에 비춰질 수 있습니다.",
   echo:
     "전체적으로 청중은 ‘용서는 한 번에 되는 일이 아니다’라는 메시지를 마음에 담아 갈 가능성이 있습니다.",
   stayed:
@@ -31,17 +31,17 @@ const fixtureForgivenessReflection: ReflectionResult = {
   alive:
     "‘용서는 상대를 옳다고 말하는 일이 아니다’라고 말씀하신 부분이 가장 선명하게 박힐 수 있습니다.",
   gentleSuggestion:
-    "원하신다면, ‘용서’와 ‘관계 회복’을 한 번씩 구분해 말씀해 주시면, 듣는 이가 자신의 단계를 조용히 가늠하는 데 도움이 될 수 있습니다.",
+    "원하신다면, ‘용서’와 ‘관계 회복’을 한 번씩 구분해 말씀해 주시면, 듣는 이가 자신의 단계를 조용히 가늠하는 데 도움이 될 수 있습니다. 시도는 전적으로 선택이십니다.",
   nextReflectionQuestion:
-    "다음에 이 주제로 말씀하신다면, 청중에게 가장 먼저 안심시키고 싶은 한 가지는 무엇일까요?",
+    "다음에 이 주제로 말씀하신다면, 어떻게 하면 청중에게 가장 먼저 안심을 전할 수 있을까요?",
 };
 
 // English: Community and carrying burdens — instructional, gentle, communal (~500–700 words)
 const fixtureCommunityReflection: ReflectionResult = {
   intendedTakeaway:
-    "믿음의 공동체가 서로의 짐을 혼자 짊어지게 하지 않는 자리가 되길 바라셨던 의도가 여기에 스며 있습니다.",
+    "믿음의 공동체가 서로의 짐을 혼자 짊어지게 하지 않는 자리가 되길 바라셨던 의도가 여기에 스며 있을 수 있습니다.",
   echo:
-    "청중은 ‘함께 걷는다는 것이 무엇인지’를 오늘의 설교를 통해 다시 떠올려 볼 수 있습니다.",
+    "어떤 청중에게는 ‘함께 걷는다는 것이 무엇인지’를 오늘의 설교를 통해 다시 떠올려 볼 수 있습니다.",
   stayed:
     "갈라디아의 말씀과 이웃의 이야기가 겹쳐 지며, ‘내가 도울 수 있는 작은 것’이 구체적으로 떠오를 수 있습니다.",
   needsHelp:
@@ -49,9 +49,9 @@ const fixtureCommunityReflection: ReflectionResult = {
   alive:
     "‘짐을 나눈다는 것은 약함을 드러내는 일이 아니다’라고 말씀하신 순간이 특히 따뜻하게 남을 수 있습니다.",
   gentleSuggestion:
-    "원하신다면, 마지막에 ‘이번 한 주, 한 가지만 실천해 본다면’처럼 범위를 좁혀 주시면 부담을 덜 느끼는 청중에게도 닿을 수 있습니다.",
+    "원하신다면, 마지막에 ‘이번 한 주, 한 가지만 실천해 본다면’처럼 범위를 좁혀 주시면 부담을 덜 느끼는 청중에게도 닿을 수 있습니다. 하나의 가능한 방향으로만 여겨 주셔도 됩니다.",
   nextReflectionQuestion:
-    "이 공동체 안에서, 지금 가장 조용히 무거운 짐을 지고 있을지도 모르는 이가 누구일지 잠시 떠올려 보신 적이 있으신가요?",
+    "만약 이 공동체 안에서, 지금 가장 조용히 무거운 짐을 지고 있을지도 모르는 이를 한 사람 떠올려 보신다면 누구일까요?",
 };
 
 /** Curated sermon + reflection pairs for the sample selector (Korean body copy). */

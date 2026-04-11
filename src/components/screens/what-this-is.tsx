@@ -5,15 +5,15 @@ import { FlowCta } from "@/components/navigation/flow-cta";
 import { useFlow } from "@/components/providers/flow-provider";
 
 const bodyParagraphs = [
-  "이 도구는 설교와 사용자가 의도한 메시지를 바탕으로 생성된 간단한 청중 반응입니다.",
-  "이는 기도, 분별, 혹은 신뢰하는 사람들을 대신하지 않습니다.",
-  "설교를 평가하거나 신학을 판단하지 않습니다.",
+  "이곳에서는 설교 원문과 전하고 싶으셨던 마음을 바탕으로, 한 청중이 느낄 수 있는 인상을 짧게 풀어 드립니다.",
+  "기도와 분별, 혹은 신뢰하는 이들과 나누는 대화를 대신하지는 않습니다.",
+  "설교를 재거나 신학을 대신 판단하지도 않습니다.",
 ];
 
 const summaryBullets = [
   "한 청중이 느낄 수 있는 인상",
-  "개인적인 성찰 도구",
-  "동의하지 않아도 괜찮은 결과",
+  "개인적으로 쓰는 성찰 공간",
+  "마음에 맞지 않아도 괜찮은 글",
 ];
 
 export const WhatThisIs = () => {

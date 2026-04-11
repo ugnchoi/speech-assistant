@@ -8,6 +8,22 @@ export const storageKey = (name: string): string => `${PREFIX}${name}`;
 
 export const isBrowser = (): boolean => typeof window !== "undefined";
 
+const STORAGE_PROBE_KEY = `${PREFIX}probe`;
+
+/** Returns false when localStorage is missing, disabled, or throws (e.g. private mode). */
+export const isLocalStorageAvailable = (): boolean => {
+  if (!isBrowser()) {
+    return false;
+  }
+  try {
+    window.localStorage.setItem(STORAGE_PROBE_KEY, "1");
+    window.localStorage.removeItem(STORAGE_PROBE_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const sessionStorageKey = (id: string): string => `${SESSION_KEY_PREFIX}${id}`;
 
 const normalizeSession = (raw: unknown): ReflectionSession | null => {
@@ -35,6 +51,7 @@ const normalizeSession = (raw: unknown): ReflectionSession | null => {
         ? s.sampleFixtureId
         : null,
     reflection: s.reflection ?? null,
+    reflectionGenerationFailed: Boolean(s.reflectionGenerationFailed),
     calibration: s.calibration ?? null,
     chosenNextStep: s.chosenNextStep ?? null,
     completedAt: s.completedAt ?? null,

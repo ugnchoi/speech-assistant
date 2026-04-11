@@ -8,15 +8,15 @@ import { cn } from "@/lib/utils";
 const cards = [
   {
     choice: "suggestion" as const,
-    title: "명확성을 위한 한 가지 제안",
-    description: "부드러운 한 줄 제안으로 다음 준비에 참고해 보세요.",
-    ariaLabel: "명확성을 위한 제안 화면으로 이동",
+    title: "한 가지 생각해 볼 제안",
+    description: "꼭 따르실 필요는 없습니다. 편하실 때만 곁에 두어 보세요.",
+    ariaLabel: "한 가지 제안 화면으로 이동",
   },
   {
     choice: "reflection-question" as const,
-    title: "다음 설교를 위한 질문",
-    description: "스스로에게 물을 만한 질문을 받아보세요.",
-    ariaLabel: "다음 설교를 위한 질문 화면으로 이동",
+    title: "스스로에게 물을 만한 질문",
+    description: "정답이 없는 질문입니다. 잠시 머물다 가셔도 괜찮습니다.",
+    ariaLabel: "성찰 질문 화면으로 이동",
   },
 ] as const;
 
@@ -30,7 +30,9 @@ export const NextStep = () => {
 
   return (
     <div className="screen-fade-in space-y-10">
-      <h1 className="text-screen-title text-balance text-foreground">다음 단계를 선택해 주세요</h1>
+      <h1 className="text-screen-title text-balance text-foreground">
+        원하시는 것만 골라 보세요
+      </h1>
       <div className="grid gap-4 sm:grid-cols-2">
         {cards.map((card) => {
           const isSelected = session.chosenNextStep === card.choice;
