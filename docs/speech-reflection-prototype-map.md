@@ -218,13 +218,13 @@ Prototype is successful if users say:
 
 ## 14. Phased Build Plan
 
-| Phase | Focus |
-|-------|--------|
-| **Phase 1** | Layout + screens |
-| **Phase 2** | Full flow wiring |
-| **Phase 3** | Mock engine |
-| **Phase 4** | Tone + trust copy |
-| **Phase 5** | Variant testing + export |
+| Phase | Focus | Implementation Plan |
+|-------|--------|---------------------|
+| **Phase 1** | Layout + screens | [phase-1-layout-and-screens.md](./phase-1-layout-and-screens.md) |
+| **Phase 2** | Full flow wiring | [phase-2-full-flow-wiring.md](./phase-2-full-flow-wiring.md) |
+| **Phase 3** | Mock engine | [phase-3-mock-engine.md](./phase-3-mock-engine.md) |
+| **Phase 4** | Tone + trust copy | [phase-4-tone-and-trust-copy.md](./phase-4-tone-and-trust-copy.md) |
+| **Phase 5** | Variant testing + export | [phase-5-variant-testing-and-export.md](./phase-5-variant-testing-and-export.md) |
 
 ---
 
