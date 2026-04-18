@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
 import "@/styles/app.css";
 
@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const notoSerifKR = Noto_Serif_KR({
+  variable: "--font-noto-serif-kr",
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   title: "설교의 메아리 · Prototype",
   description: "설교를 들은 한 청중의 인상을 조용히 들어 보는 성찰 프로토타입",
@@ -28,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifKR.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Shell>{children}</Shell>

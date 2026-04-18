@@ -72,7 +72,7 @@ export const Processing = () => {
         aria-live="polite"
         aria-label="준비 중"
       >
-        <span className="processing-dot" aria-hidden />
+        <span className="processing-breath" aria-hidden />
         <p className="text-helper text-center text-muted-foreground">
           잠시만 기다려 주세요. 서두르지 않아도 괜찮습니다.
         </p>

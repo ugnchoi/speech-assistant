@@ -24,30 +24,32 @@ export const FlowProgress = ({ currentStep, className }: FlowProgressProps) => {
   const inBar = idx >= 0;
   const total = FLOW_STEPS_FOR_BAR.length;
   const position = inBar ? idx + 1 : 0;
-  const ratio = inBar ? position / total : 0;
 
   if (!inBar) {
     return null;
   }
 
   return (
-    <div
-      className={cn("w-full", className)}
+    <nav
+      aria-label="흐름"
       role="progressbar"
       aria-valuemin={1}
       aria-valuemax={total}
       aria-valuenow={position}
-      aria-label={`단계 ${position} / ${total}`}
+      className={cn("flex justify-center gap-1.5", className)}
     >
-      <div className="h-0.5 w-full overflow-hidden rounded-full bg-border/80">
-        <div
-          className="h-full rounded-full bg-muted-foreground/25 transition-[width] duration-300 ease-out"
-          style={{ width: `${ratio * 100}%` }}
+      {FLOW_STEPS_FOR_BAR.map((step, i) => (
+        <span
+          key={step}
+          aria-current={i === idx ? "step" : undefined}
+          className={cn(
+            "h-px w-5 rounded-full transition-colors duration-300",
+            i < idx && "bg-foreground/30",
+            i === idx && "bg-foreground/55",
+            i > idx && "bg-foreground/10",
+          )}
         />
-      </div>
-      <p className="mt-1.5 text-center text-[0.65rem] text-muted-foreground/80">
-        {position} / {total}
-      </p>
-    </div>
+      ))}
+    </nav>
   );
 };

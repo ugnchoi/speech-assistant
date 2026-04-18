@@ -20,7 +20,7 @@ export const ReflectionQuestion = () => {
         과제가 아니라, 잠시 곁에 두어 볼 만한 호기심입니다.
       </TrustNote>
       <div className="rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8">
-        <p className="text-body text-lg leading-relaxed text-foreground">{text}</p>
+        <p className="text-reflective text-lg text-foreground">{text}</p>
       </div>
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <FlowCta label="알겠습니다" onClick={goNext} aria-label="알겠습니다" />
